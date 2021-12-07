@@ -1,0 +1,43 @@
+<h1>CREACIÓN DE CUENTAS</h1>
+
+<form action="/users/create" method="POST" enctype="multipart/form-data">
+    <div class="input-form">
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name" placeholder="Nombre">
+    </div>
+    <div class="input-form">
+        <label for="lastName">Apellido</label>
+        <input type="text" name="lastName" id="lastName" placeholder="Nombre">
+    </div>
+    <div class="input-form">
+        <label for="email">email</label>
+        <input type="email" name="email" id="email" placeholder="email">
+    </div>
+    <div class="input-form">
+        <label for="password">contraseña</label>
+        <input type="password" name="password" id="password" placeholder="contraseña">
+    </div>
+    <div class="input-form">
+        <label for="city">Ciudad</label>
+        <input type="text" name="city" id="city" placeholder="ciudad">
+    </div>
+    <div class="input-form">
+        <label for="address">Direccióne</label>
+        <input type="text" name="address" id="address" placeholder="Direccion">
+    </div>
+    <div class="input-form">
+        <label for="number">Numero</label>
+        <input type="text" name="number" id="number" placeholder="Numero">
+    </div>
+    <div class="input-form">
+        <label for="postalCode">Codigo Postal</label>
+        <input type="text" name="postalCode" id="postalCode" placeholder="Codigo Postal">
+    </div>
+    <div class="input-form">
+        <label for="image">Elija una imagen</label>
+        <input type="file" name="image" id="image">
+    </div>
+
+    <button type="submit">Crear cuenta</button>
+    <button type="reset">BORRAR</button>
+</form>

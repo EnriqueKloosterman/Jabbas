@@ -1,0 +1,21 @@
+<h1>DETALLE DEL PRODUCTO</h1>
+
+<div class="p-container">
+    <h2><%= detailProduct.name %></h2>
+    <img src="/images/products/<%= detailProduct.image[0].name %>" width="30%" alt="">
+    <div class="small-img" >
+        <% if (detailProduct.image.length >= 4) { %>
+        <% for( let i = 0; i < 4; i++ ) { %>
+        <div class="img-small">
+            <img src="/images/products/<%= detailProduct.image[i].name %>" width="4%" alt="">
+        </div>
+        <% } %>
+        <% } %>
+    </div>
+    <div class="desc">
+        <p><%= detailProduct.description %></p>
+        <p><%= detailProduct.price %></p>
+        <p><%= detailProduct.brand.name %></p>
+    </div>
+
+</div>

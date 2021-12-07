@@ -1,0 +1,39 @@
+<h1>EDICION DE PRODUCTO</h1>
+
+<form action="/products/<%= productToEdit.id %>" method="POST" enctype="multipart/form-data">
+<div class="edit-form">
+    <label for="name">Nombre del producto</label>
+    <input type="text" name="name" id="name" value="<%= productToEdit.name %>">
+</div>
+<div class="edit-form">
+    <label for="price">Precio</label>
+    <input type="text" name="price" id="price" value="<%= productToEdit.price %>">
+</div>
+<div class="edit-form">
+    <label for="discount">Descuento</label>
+    <input type="text" name="discount" id="discount" value="<%= productToEdit.discount %>">
+</div>
+<div class="edit-form">
+    <label for="description">Descripcion</label>
+    <input type="text" name="description" id="description" value="<%= productToEdit.description %>">
+</div>
+<div class="input-form">
+    <label for="brand">Marca</label>
+    <select name="brand" id="brand" required>
+        <option value=""disabled selected>Marca</option>
+        <% for(const marcas of brand) { %> 
+            <option value="<%= marcas.id %> "><%= marcas.name %> </option> <% } %> 
+    </select>
+</div>
+
+<div class="input-form">
+    <label for="image">imagenes</label>
+    <input type="file" name="image" id="image" multiple >
+</div>
+
+<button type="submit">editar</button>
+</form>
+
+<form action="/products/delete/<%=productToEdit.id %>" method="POST" enctype="multipart/form-data">
+    <button type="submit">eliminar</button>
+</form>

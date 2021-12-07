@@ -1,0 +1,44 @@
+<h1>Por fin animal!!</h1>
+<p>si seras bestia</p>
+
+<form action="/products/create" method="POST" enctype="multipart/form-data">
+    <div class="input-form">
+        <label for="name">Nombre del producto</label>
+        <input type="text" name="name" id="name" placeholder="Nombre del producto">
+    </div>
+    <div class="input-form">
+        <label for="price">Precio</label>
+        <input type="text" name="price" id="price" placeholder="$1000">
+    </div>
+    <div class="input-form">
+        <label for="discount">Descuento</label>
+        <input type="text" name="discount" id="discount" placeholder="10">
+    </div>
+    <div class="input-form">
+        <label for="description">Descripcion</label>
+        <input type="text" name="description" id="description" placeholder="Descripcion del producto">
+    </div>
+    <div class="input-form">
+        <label for="brand">Marca</label>
+        <select name="brand" id="brand" required>
+            <option value=""disabled selected>Marca</option>
+            <% for(const marcas of brand) { %> 
+                <option value="<%= marcas.id %> "><%= marcas.name %> </option> <% } %> 
+        </select>
+    </div>
+    <!-- <div class="input-form">
+        <select name="collection" id="collection">collection
+            <option value="1">Star Wars</option>
+            <option value="2">DC</option>
+            <option value="3">Marvel</option>
+            <option value="4">MOTU</option>
+        </select>
+    </div> -->
+
+    <div class="input-form">
+        <label for="image">imagenes</label>
+        <input type="file" name="image" id="image" multiple >
+    </div>
+
+    <button type="submit">crear producto</button>
+</form>
