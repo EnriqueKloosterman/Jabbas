@@ -11,7 +11,7 @@ const productController = {
     list: (req, res) => {
         db.Products.findAll({include: ["image", "brand"]})
         .then(products => {
-            res.render('products/productList', {products: products});
+            res.render('products/productList', {products: products, title: 'listado de productos', style: '/css/list.css'}, );
         })
         .catch((e) => console.log(e))
         // res.render('productList');

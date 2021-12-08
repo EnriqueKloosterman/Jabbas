@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Fira Sans Condensed', sans-serif;
+    
+    background-color: #eeeaea;
+    display: flex;
+    justify-content: center;
+}

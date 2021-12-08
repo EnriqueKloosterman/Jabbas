@@ -7,7 +7,7 @@ const bcryptjs = require('bcryptjs');
 
 const usersController = {
     register: (req, res) => {
-        res.render('userCreate');
+        res.render('users/userCreate');
     },
     create:  (req, res) => {
         db.Users.create({
@@ -22,11 +22,11 @@ const usersController = {
             role: 2
         })
         .catch((e) => console.log(e))
-        return res.redirect('login');
+        return res.redirect('users/login');
 
     },
     login: (req, res) => {
-        res.render('login');
+        res.render('users/login');
     }
 
 }
