@@ -6,7 +6,34 @@
 body{
     font-family: 'Fira Sans Condensed', sans-serif;
     
-    background-color: #eeeaea;
+    background-color: #eeeaea;    
+}
+main{
     display: flex;
     justify-content: center;
+}
+.top-navbar .login{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    background-color: #7c8888;
+    
+}
+.top-navbar ul{
+    list-style: none;
+}
+.top-navbar .login li{
+    padding:  7px;
+    text-decoration: none;
+}
+.top-navbar .login li a{
+    text-decoration: none;
+    color: #1c1c1d;
+}
+.top-navbar .login img{
+    width: 45px;
+    border-radius: 50%;
+    border: solid 1px black;
+    
+    
 }

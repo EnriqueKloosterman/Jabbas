@@ -1,20 +1,24 @@
 <%- include('../partials/head')  %> 
+<%- include('../partials/header')  %> 
 
-<section class="container">
-    <h1>aca va el listado de productos</h1>
-    <% for( let i = 0; i < products.length; i++ ) { %>
-    <article class="product-container">
-        <section class="img-container">
-            <img src="/images/products/<%= products[i].image[0].name %>" alt="foto de <%= products[i].name %>">
-        </section>
-        <section class="description-container">
-            <h2 id="name"><%= products[i].name %></h2>
-            <p><%= products[i].description %></p>
-            <p><%= products[i].brand.name %> </p>
-            
-        </section>
-    </article>
-
+<main>
+    <section class="container">
+        <h1>aca va el listado de productos</h1>
+        <% for( let i = 0; i < products.length; i++ ) { %>
+        <article class="product-container">
+            <section class="img-container">
+                <img src="/images/products/<%= products[i].image[0].name %>" alt="foto de <%= products[i].name %>">
+            </section>
+            <section class="description-container">
+                <h2 id="name"><%= products[i].name %></h2>
+                <p><%= products[i].description %></p>
+                <p><%= products[i].brand.name %> </p>
+                
+            </section>
+        </article>
     
-    <% } %>
-</section>
+        
+        <% } %>
+    </section>
+
+</main>

@@ -22,5 +22,10 @@ app.use(express.json());
 app.use('/products', productRouter);
 app.use('/users', usersRouter);
 
+app.use((req, res, next) => {
+    res.status(404).render("404", { title: "Jabba's Palace - Not found" });
+    next();
+});
+
 
 app.listen(port, ()=>console.log(`servidor corriendo en el puerto ${port}`));

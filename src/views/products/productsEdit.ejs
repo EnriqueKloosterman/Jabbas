@@ -1,4 +1,7 @@
-<h1>EDICION DE PRODUCTO</h1>
+<h1>EDICION DE <%= productToEdit.name %></h1>
+
+<img src="/images/products/<%= productToEdit.image[0].name %>" alt="foto de <%= productToEdit.name %>" width="20%">
+
 
 <form action="/products/<%= productToEdit.id %>" method="POST" enctype="multipart/form-data">
 <div class="edit-form">

@@ -71,6 +71,7 @@ const productController = {
         return res.render("products/productsEdit",{
             productToEdit, brand
         })
+        
     },
     update: async (req, res) => {
         let id = req.params.id;
