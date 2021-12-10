@@ -1,22 +1,38 @@
+<%- include('../partials/head')  %> 
+<%- include('../partials/header')  %> 
+
+
 <h1>PAGINA DE LOGIN</h1>
 
 
+<section class="container">
+    <form action="/users/login" method="POST" class="form" id="form">
+        <div class="form-input">
+            <label for="email">email</label>
+            <input type="email" name="email" id="email" value="<%= locals.oldData ? oldData.email : null %>">
+            <% if (locals.errors && errors.email) { %>
+                <div class="error-text">
+                    <%= errors.email.msg  %> 
+                </div>             
+            <% } %>
+        </div>
+        <div class="form-input">
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" id="password">
+            <% if (locals.errors && errors.password) { %>
+                <div class="error-text">
+                    <%= errors.password.msg  %> 
+                </div>             
+            <% } %>
+        </div>
+        <div class="input-check">
+            <label for="">
+                <input type="checkbox" name="remember_user">
+                Recordar mi usuario
+            </label>
+        </div>
+        <button type="submit">ingresar</button>
+        
+    </form>
 
-<form action="/users/login" method="POST">
-    <div class="form-input">
-        <label for="email">email</label>
-        <input type="email" name="email" id="email">
-    </div>
-    <div class="form-input">
-        <label for="password">Contraseña</label>
-        <input type="password" name="password" id="password">
-    </div>
-    <div class="input-check">
-        <label for="">
-            <input type="checkbox" name="remember_user">
-            Recordar mi usuario
-        </label>
-    </div>
-    <button type="submit">ingresar</button>
-    
-</form>
+</section>

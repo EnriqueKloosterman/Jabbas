@@ -56,12 +56,12 @@ const validations = [
     body('image').custom((value, { req }) =>{
         let file = req.file;
         let acceptedExtension = ['.jpg', '.png', '.gif'];
-        let fileExtension = path.extname(file.originalname);
         if(!file){
             throw new Error('tienes que subir una imagen');
         }else{
-            if(acceptedExtension.includes(fileExtension)){
-                throw new Error(`las extensuones de los archivos deben ser ${acceptedExtension.join(', ')}`)
+            let fileExtension = path.extname(file.originalname);
+            if(!acceptedExtension.includes(fileExtension)){
+                throw new Error(`los archivos deben ser de tipo ${acceptedExtension.join(', ')}`)
             }
         }
         return true;
