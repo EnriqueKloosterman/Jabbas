@@ -12,11 +12,15 @@ main{
     display: flex;
     justify-content: center;
 }
+.top-navbar{
+}
 .top-navbar .login{
     display: flex;
     flex-wrap: wrap;
     flex-direction: row-reverse;
+    height: 60px;
     background-color: #7c8888;
+    
     
 }
 .top-navbar ul{
@@ -32,8 +36,10 @@ main{
 }
 .top-navbar .login img{
     width: 45px;
+    height: 45px;
     border-radius: 50%;
     border: solid 1px black;
+    margin: 8px, 0
     
     
 }

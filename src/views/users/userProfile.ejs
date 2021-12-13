@@ -1,11 +1,22 @@
-<%- include('../partials/head')  %> 
+<%- include('../partials/head')  %>
+<%- include('../partials/header')  %> 
 
 <main>
+    <h2>perfil del usuario</h2>
     <section class="profile-container">
         <section class="user-image">
+            <div class="img-wrapper">
+                <img src="/images/users/<%= user.image %> " alt="imagen de perfil de <%= user.name  %>">
+            </div>
+            <h3>Hola <%= user.name %> </h3>
 
         </section>
         <section class="user-data">
+            <p><%= user.name  %> <%= user.lastName %></p>
+            <p><%= user.email %></p>
+            <p><%= user.city %> </p>
+            <p><%= user.address  %> Nro <%= user.number  %> </p>            
+            <p><%= user.postalCode  %> </p>
             
         </section>
     </section>

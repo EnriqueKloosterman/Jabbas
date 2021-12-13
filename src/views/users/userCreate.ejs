@@ -1,92 +1,95 @@
-<h1>CREACIÓN DE CUENTAS</h1>
+<%- include('../partials/head')  %> 
+<%- include('../partials/header')  %> 
 
 <section class="container">
+    <h1>CREACIÓN DE CUENTAS</h1>
 
-
-    <form action="/users/register" method="POST" enctype="multipart/form-data">
-        <div class="input-form">
-            <label for="name">Nombre</label>
-            <input type="text" name="name" id="name" placeholder="Nombre"  value="<%= locals.oldData ? oldData.name : null %>">            
-            <% if (locals.errors && errors.name) { %>
-                <div class="error-text">
-                    <%= errors.name.msg  %> 
-                </div>             
-            <% } %>
-        </div>
-        <div class="input-form">
-            <label for="lastName">Apellido</label>
-            <input type="text" name="lastName" id="lastName" placeholder="Apellido" value="<%= locals.oldData ? oldData.lastName : null %>">
-            <% if (locals.errors && errors.lastName) { %>
-                <div class="error-text">
-                    <%= errors.lastName.msg  %> 
-                </div>             
-            <% } %>
-        </div>
-        <div class="input-form">
-            <label for="email">email</label>
-            <input type="email" name="email" id="email" placeholder="email" value="<%= locals.oldData ? oldData.email : null %>">
-            <% if (locals.errors && errors.email) { %>
-                <div class="error-text">
-                    <%= errors.email.msg  %> 
-                </div>             
-            <% } %>
-        </div>
-        <div class="input-form">
-            <label for="password">contraseña</label>
-            <input type="password" name="password" id="password" placeholder="contraseña">
-            <% if (locals.errors && errors.password) { %>
-                <div class="error-text">
-                    <%= errors.password.msg  %> 
-                </div>             
-            <% } %>
-        </div>
-        <div class="input-form">
-            <label for="city">Ciudad</label>
-            <input type="text" name="city" id="city" placeholder="ciudad" value="<%= locals.oldData ? oldData.city : null %>">
-            <% if (locals.errors && errors.city) { %>
-                <div class="error-text">
-                    <%= errors.city.msg  %> 
-                </div>             
-            <% } %>
-        </div>
-        <div class="input-form">
-            <label for="address">Direccióne</label>
-            <input type="text" name="address" id="address" placeholder="Direccion" value="<%= locals.oldData ? oldData.address : null %>">
-            <% if (locals.errors && errors.address) { %>
-                <div class="error-text">
-                    <%= errors.address.msg  %> 
-                </div>             
-            <% } %>
-        </div>
-        <div class="input-form">
-            <label for="number">Numero</label>
-            <input type="text" name="number" id="number" placeholder="Numero" value="<%= locals.oldData ? oldData.number : null %>">
-            <% if (locals.errors && errors.number) { %>
-                <div class="error-text">
-                    <%= errors.number.msg  %> 
-                </div>             
-            <% } %>
-        </div>
-        <div class="input-form">
-            <label for="postalCode">Codigo Postal</label>
-            <input type="text" name="postalCode" id="postalCode" placeholder="Codigo Postal" value="<%= locals.oldData ? oldData.postalode : null %>">
-            <% if (locals.errors && errors.postalCode) { %>
-                <div class="error-text">
-                    <%= errors.postalCode.msg  %> 
-                </div>             
-            <% } %>
-        </div>
-        <div class="input-form">
-            <label for="image">Elija una imagen</label>
-            <input type="file" name="image" id="image">
-            <% if (locals.errors && errors.image) { %>
-                <div class="error-text">
-                    <%= errors.image.msg  %> 
-                </div>             
-            <% } %>
-        </div>
-    
-        <button type="submit">Crear cuenta</button>
-        <button type="reset">BORRAR</button>
-    </form>
+    <section class="form-container">    
+        <form action="/users/register" method="POST" enctype="multipart/form-data">
+            <div class="input-form">
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name" placeholder="Nombre"  value="<%= locals.oldData ? oldData.name : null %>">            
+                <% if (locals.errors && errors.name) { %>
+                    <div class="error-text">
+                        <%= errors.name.msg  %> 
+                    </div>             
+                <% } %>
+            </div>
+            <div class="input-form">
+                <label for="lastName">Apellido</label>
+                <input type="text" name="lastName" id="lastName" placeholder="Apellido" value="<%= locals.oldData ? oldData.lastName : null %>">
+                <% if (locals.errors && errors.lastName) { %>
+                    <div class="error-text">
+                        <%= errors.lastName.msg  %> 
+                    </div>             
+                <% } %>
+            </div>
+            <div class="input-form">
+                <label for="email">email</label>
+                <input type="email" name="email" id="email" placeholder="email" value="<%= locals.oldData ? oldData.email : null %>">
+                <% if (locals.errors && errors.email) { %>
+                    <div class="error-text">
+                        <%= errors.email.msg  %> 
+                    </div>             
+                <% } %>
+            </div>
+            <div class="input-form">
+                <label for="password">contraseña</label>
+                <input type="password" name="password" id="password" placeholder="contraseña">
+                <% if (locals.errors && errors.password) { %>
+                    <div class="error-text">
+                        <%= errors.password.msg  %> 
+                    </div>             
+                <% } %>
+            </div>
+            <div class="input-form">
+                <label for="city">Ciudad</label>
+                <input type="text" name="city" id="city" placeholder="ciudad" value="<%= locals.oldData ? oldData.city : null %>">
+                <% if (locals.errors && errors.city) { %>
+                    <div class="error-text">
+                        <%= errors.city.msg  %> 
+                    </div>             
+                <% } %>
+            </div>
+            <div class="input-form">
+                <label for="address">Dirección</label>
+                <input type="text" name="address" id="address" placeholder="Direccion" value="<%= locals.oldData ? oldData.address : null %>">
+                <% if (locals.errors && errors.address) { %>
+                    <div class="error-text">
+                        <%= errors.address.msg  %> 
+                    </div>             
+                <% } %>
+            </div>
+            <div class="input-form">
+                <label for="number">Numero</label>
+                <input type="text" name="number" id="number" placeholder="Numero" value="<%= locals.oldData ? oldData.number : null %>">
+                <% if (locals.errors && errors.number) { %>
+                    <div class="error-text">
+                        <%= errors.number.msg  %> 
+                    </div>             
+                <% } %>
+            </div>
+            <div class="input-form">
+                <label for="postalCode">Codigo Postal</label>
+                <input type="text" name="postalCode" id="postalCode" placeholder="Codigo Postal" value="<%= locals.oldData ? oldData.postalode : null %>">
+                <% if (locals.errors && errors.postalCode) { %>
+                    <div class="error-text">
+                        <%= errors.postalCode.msg  %> 
+                    </div>             
+                <% } %>
+            </div>
+            <div class="input-form">
+                <label for="image">Elija una imagen</label>
+                <input type="file" name="image" id="image">
+                <% if (locals.errors && errors.image) { %>
+                    <div class="error-text">
+                        <%= errors.image.msg  %> 
+                    </div>             
+                <% } %>
+            </div>
+        
+            <button type="submit">Crear cuenta</button>
+            <button type="reset">BORRAR</button>
+        </form>
+    </section>
 </section>

@@ -33,6 +33,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         role: {
             type: DataTypes.INTEGER
+        },
+        image: {
+            type: DataTypes.STRING
         }
 
     };

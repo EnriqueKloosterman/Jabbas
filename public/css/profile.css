@@ -1,0 +1,47 @@
+main{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.profile-container{
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: solid 1px green;
+}
+.profile-container .user-image{
+    width: 90%;
+    height: 90%;
+    margin: 10px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 6% 0;
+}
+.profile-container .user-image h3{
+    width: 100%;
+    text-align: center;
+    margin-top: 3%;
+    font-size: 2rem;
+}
+.profile-container .user-image .img-wrapper img{
+    justify-content: center;
+}
+.profile-container .user-image img{
+    border: solid 2px blue;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    
+}
+.profile-container .user-data{
+    width: 58%;
+    height: 90%;
+    text-align: center;
+    /* margin: 10px 8px; */
+    /* padding-left: 10%;
+    padding-top: 6%; */
+    padding: 0 15% ;
+}

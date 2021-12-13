@@ -2,12 +2,12 @@
     <div class="top-navbar">
         <nav>
             <ul class="login">
-                <% if (locals.isLoged) { %>
-                    <img src="/images/users/<%= locals.userLoged.image %>" alt="" width="50px" str>
-                    <%= locals.userLoged.name + ' ' + locals.userLoged.lastName %>
+                <% if (locals.isLogged) { %>
+                    <img src="/images/users/<%= locals.userLogged.image %>" alt="" width="50px" str>
+                    <%= locals.userLogged.name + ' ' + locals.userLogged.lastName %>
 
                     <li><a href="/user/profile"><i class="fas fa-portrait"></i></a></li>
-                    <li><a href="user/logout">logout</a></li>
+                    <li><a href="/users/logout">logout</a></li>
                 <% } else {%>
                     <li><a href="/user/register">registrarse</a></li>
                     <li><a href="user/logint">ingrersar</a></li>

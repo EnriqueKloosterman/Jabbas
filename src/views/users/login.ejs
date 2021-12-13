@@ -9,7 +9,7 @@
     <form action="/users/login" method="POST" class="form" id="form">
         <div class="form-input">
             <label for="email">email</label>
-            <input type="email" name="email" id="email" value="<%= locals.oldData ? oldData.email : null %>">
+            <input type="email" name="email" id="email" class="<%= locals.errors && errors.email ? 'is-invalid' : null %>"  value="<%= locals.oldData && oldData.email ? oldData.email : null%>">
             <% if (locals.errors && errors.email) { %>
                 <div class="error-text">
                     <%= errors.email.msg  %> 
@@ -27,7 +27,7 @@
         </div>
         <div class="input-check">
             <label for="">
-                <input type="checkbox" name="remember_user">
+                <input type="checkbox" name="remember_user" id="remember_user">
                 Recordar mi usuario
             </label>
         </div>
