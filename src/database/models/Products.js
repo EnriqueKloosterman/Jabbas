@@ -32,10 +32,6 @@ module.exports = (sequelize, DataTypes) => {
             as: "brand",
             foreignKey: "brand_id",
         });
-        Products.belongsTo(models.Collection, {
-            as: "collection",
-            foreignKey: "collection_id"
-        });
         Products.belongsTo(models.Type, {
             as: "type",
             foreignKey: "type_id"

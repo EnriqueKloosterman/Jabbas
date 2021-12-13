@@ -26,6 +26,14 @@
                 <option value="<%= marcas.id %> "><%= marcas.name %> </option> <% } %> 
         </select>
     </div>
+    <div class="input-form">
+        <label for="type">Categoria</label>
+        <select name="type" id="type" required>
+            <option value=""disabled selected>categoria</option>
+            <% for(const tipo of type) { %> 
+                <option value="<%= tipo.id %> "><%= tipo.name %> </option> <% } %> 
+        </select>
+    </div>
     <!-- <div class="input-form">
         <select name="collection" id="collection">collection
             <option value="1">Star Wars</option>

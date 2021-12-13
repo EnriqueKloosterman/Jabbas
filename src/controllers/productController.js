@@ -9,7 +9,7 @@ const Op = db.Sequelize.Op;
 const productController = {
 
     list: (req, res) => {
-        db.Products.findAll({include: ["image", "brand"]})
+        db.Products.findAll({include: ["image", "brand", "type"]})
         .then(products => {
             res.render('products/productList', {products: products, title: 'listado de productos', style: '/css/list.css'}, );
         })
@@ -18,13 +18,13 @@ const productController = {
     },
     create: (req, res) => {
         let brandDb = db.Brand.findAll();
-        // let typeDb = db.Type.findAll();
+        let typeDb = db.Type.findAll();
         //let collectionDb = db.Collection.findAll();
 
-        Promise.all([brandDb])
-        .then(function([brand]){
+        Promise.all([brandDb, typeDb])
+        .then(function([brand, type]){
             return res.render('products/productCreate', {
-                brand
+                brand, type
             });
         })
         .catch((e) => console.log(e));
@@ -64,12 +64,13 @@ const productController = {
     editView: async (req, res) => {
         let id = req.params.id;
         let brand = await db.Brand.findAll();
+        let type = await db.Type.findAll();
 
         let productToEdit = await db.Products.findByPk(id, {
-            include: ["image", "brand"]
+            include: ["image", "brand", "type"]
         })
         return res.render("products/productsEdit",{
-            productToEdit, brand
+            productToEdit, brand, type
         })
         
     },
@@ -80,7 +81,8 @@ const productController = {
             price: req.body.price,
             discount: req.body.discount,
             description: req.body.description,
-            brand_id: req.body.brand
+            brand_id: req.body.brand,
+            type_id: req.body.type
         },
         {
             where: {
