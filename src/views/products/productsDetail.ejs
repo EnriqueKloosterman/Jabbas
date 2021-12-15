@@ -14,7 +14,12 @@
     </div>
     <div class="desc">
         <p><%= detailProduct.description %></p>
-        <p><%= detailProduct.price %></p>
+        <ul>
+            <% detailProduct.detail.forEach(element => { %>
+                <li><%= element.detail %></li>  
+            <% }) %>
+        </ul>
+        <p>$<%= detailProduct.price %></p>
         <p><%= detailProduct.brand.name %></p>
     </div>
 

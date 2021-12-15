@@ -40,6 +40,10 @@ module.exports = (sequelize, DataTypes) => {
             as: "image",
             foreignKey: "product_id"
         });
+        Products.hasMany(models.Detail, {
+            as: 'detail',
+            foreignKey: 'product_id'
+        })
     }
     return Products;
 }

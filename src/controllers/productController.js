@@ -9,7 +9,7 @@ const Op = db.Sequelize.Op;
 const productController = {
 
     list: (req, res) => {
-        db.Products.findAll({include: ["image", "brand", "type"]})
+        db.Products.findAll({include: ["image", "detail", "brand", "type"]})
         .then(products => {
             res.render('products/productList', {products: products, title: 'listado de productos', style: '/css/list.css'}, );
         })
@@ -40,6 +40,15 @@ const productController = {
             description: req.body.description,
             brand_id: req.body.brand
         });
+
+        let textFields = [];
+        for(let i = 0; i < req.body.detail.length; i++){
+            textFields.push(req.body.detail[i]);
+        }
+        for(let i= 0; i < textFields.length; i++){
+            await newProduct.createDetail({ detail: textFields[i]});
+        }
+
         let images= [];
         for(let i = 0; i < req.files.length; i++){
             images.push(req.files[i].filename);
@@ -55,7 +64,7 @@ const productController = {
     detail: async(req, res) => {
         const id = req.params.id;
         db.Products.findByPk(id, {
-            include: ["image", "brand"]
+            include: ["image", "detail", "brand", "type"]
         })
         .then(product => {
             res.render('products/productsDetail', { detailProduct: product});
@@ -67,7 +76,7 @@ const productController = {
         let type = await db.Type.findAll();
 
         let productToEdit = await db.Products.findByPk(id, {
-            include: ["image", "brand", "type"]
+            include: ["image", "detail", "brand", "type"]
         })
         return res.render("products/productsEdit",{
             productToEdit, brand, type
@@ -90,16 +99,36 @@ const productController = {
             }
         });
 
-        let editProduct = await db.Products.findByPk(id, {
-            include: "image",
+        const editProduct = await db.Products.findByPk(id, {
+            include: ["image", "detail"]
         });
+
+        await db.Detail.destroy({
+            where: {
+                product_id: req.params.id
+            }
+        })
+
+        let textFields = [];
+        for(let i = 0; i < req.body.detail.length; i++){
+            textFields.push(req.body.detail[i]);
+        }
+        for(let i= 0; i < textFields.length; i++){
+            await editProduct.createDetail({ detail: textFields[i]});
+        }
+
+        // await db.Image.destroy({
+        //     where: {
+        //         product_id: req.params.id
+        //     }
+        // })
 
         let images = [];
         for(let i = 0; i < req.files.length; i++){
             images.push(req.files[i].filename);
         }
         for(let i = 0; i < images.length; i++){
-            await editProduct.createImage({ name: images[i]});
+            await editProduct.createImage({ name: images[i] });
         }
         return res.redirect('detail/' + id);
     },
