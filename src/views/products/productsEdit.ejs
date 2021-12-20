@@ -1,7 +1,6 @@
 <h1>EDICION DE <%= productToEdit.name %></h1>
 
-<img src="/images/products/<%= productToEdit.image[0].name %>" alt="foto de <%= productToEdit.name %>" width="20%">
-
+<img src="/images/products/<%= productToEdit.image[0].name %>" width="30%" alt="">
 
 <form action="/products/<%= productToEdit.id %>" method="POST" enctype="multipart/form-data">
 <div class="edit-form">
@@ -27,6 +26,14 @@
         <% for(const marcas of brand) { %> 
             <option value="<%= marcas.id %> "><%= marcas.name %> </option> <% } %> 
     </select>
+    <div class="input-form">
+        <label for="collection">Colección</label>
+        <select name="collection" id="collection" required>
+            <option value=""disabled selected>Colección</option>
+            <% for(const coleccion of collection) { %> 
+                <option value="<%= coleccion.id %> "><%= coleccion.name %> </option> <% } %> 
+        </select>
+    </div>
 </div>
 <div class="input-form">
     <label for="type">Categoria</label>
@@ -39,16 +46,18 @@
 
 <div class="input-form">
     <label for="detail">Detalle</label>
-    <input type="text" name="detail" value="<%= productToEdit.detail[0].detail %>" />
+    <input type="text" name="detail" id="detail[]" value="" />
 </div>
 <div class="input-form">
     <label for="detail">Detalle</label>
-    <input type="text" name="detail" value="<%= productToEdit.detail[1].detail %>"/>
+    <input type="text" name="detail" id="detail[]" value=""/>
 </div>
 <div class="input-form">
     <label for="detail">Detalle</label>
-    <input type="text" name="detail" value="<%= productToEdit.detail[2].detail %>" />
+    <input type="text" name="detail" id="detail[]" value="" />
 </div>
+
+
 
 <div class="input-form">
     <label for="image">imagenes</label>
@@ -58,6 +67,6 @@
 <button type="submit">editar</button>
 </form>
 
-<form action="/products/delete/<%=productToEdit.id %>" method="POST" enctype="multipart/form-data">
+<form action="/products/<%=productToEdit.id %>?_method=DELETE" method="POST" >
     <button type="submit">eliminar</button>
 </form>

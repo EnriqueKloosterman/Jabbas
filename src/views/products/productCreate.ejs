@@ -15,7 +15,8 @@
         <input type="text" name="discount" id="discount" placeholder="10">
     </div>
     <div class="input-form">
-        <label for="description">Descripcion</label>
+        <label for="description">Descripcion</label><br>
+        <!-- <textarea name="name" id="description" placeholder="Descripcion del producto" cols="30" rows="5"></textarea> -->
         <input type="text" name="description" id="description" placeholder="Descripcion del producto">
     </div>
     <div class="input-form">
@@ -24,6 +25,14 @@
             <option value=""disabled selected>Marca</option>
             <% for(const marcas of brand) { %> 
                 <option value="<%= marcas.id %> "><%= marcas.name %> </option> <% } %> 
+        </select>
+    </div>
+    <div class="input-form">
+        <label for="collection">Colección</label>
+        <select name="collection" id="collection" required>
+            <option value=""disabled selected>Colección</option>
+            <% for(const coleccion of collection) { %> 
+                <option value="<%= coleccion.id %> "><%= coleccion.name %> </option> <% } %> 
         </select>
     </div>
     <div class="input-form">

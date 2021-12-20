@@ -8,10 +8,10 @@ body{
     
     background-color: #eeeaea;    
 }
-main{
+/* main{
     display: flex;
     justify-content: center;
-}
+} */
 .top-navbar{
 }
 .top-navbar .login{

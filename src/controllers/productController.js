@@ -9,7 +9,7 @@ const Op = db.Sequelize.Op;
 const productController = {
 
     list: (req, res) => {
-        db.Products.findAll({include: ["image", "detail", "brand", "type"]})
+        db.Products.findAll({include: ["image", "detail", "brand", "type", "collection"]})
         .then(products => {
             res.render('products/productList', {products: products, title: 'listado de productos', style: '/css/list.css'}, );
         })
@@ -19,12 +19,12 @@ const productController = {
     create: (req, res) => {
         let brandDb = db.Brand.findAll();
         let typeDb = db.Type.findAll();
-        //let collectionDb = db.Collection.findAll();
+        let collectionDb = db.Collection.findAll();
 
-        Promise.all([brandDb, typeDb])
-        .then(function([brand, type]){
+        Promise.all([brandDb, typeDb, collectionDb])
+        .then(function([brand, type, collection]){
             return res.render('products/productCreate', {
-                brand, type
+                brand, type, collection
             });
         })
         .catch((e) => console.log(e));
@@ -38,7 +38,8 @@ const productController = {
             price: req.body.price,
             discount: req.body.discount,
             description: req.body.description,
-            brand_id: req.body.brand
+            brand_id: req.body.brand,
+            collection_id: req.body.collection
         });
 
         let textFields = [];
@@ -62,24 +63,38 @@ const productController = {
         return res.render('error');
     },
     detail: async(req, res) => {
+        // const id = req.params.id;
+        // db.Products.findByPk(id, {
+        //     include: ["image", "detail", "brand", "collection", "type"]
+        // })
+        // .then(product => {
+        //     res.render('products/productsDetail', { detailProduct: product});
+        // })
+        // .catch((e) => res.send(e))    
+
         const id = req.params.id;
-        db.Products.findByPk(id, {
-            include: ["image", "detail", "brand", "type"]
+        let brand = await db.Brand.findAll();
+        let type = await db.Type.findAll();
+        let collection = await db.Collection.findAll();
+
+        let detailProduct = await db.Products.findByPk(id , {
+            include: ["image", "detail", "brand", "collection", "type"]
         })
-        .then(product => {
-            res.render('products/productsDetail', { detailProduct: product});
-        })        
+        return res.render('products/productsDetail', {
+            detailProduct, brand, collection, type
+        })
     },
     editView: async (req, res) => {
         let id = req.params.id;
         let brand = await db.Brand.findAll();
         let type = await db.Type.findAll();
+        let collection = await db.Collection.findAll();
 
         let productToEdit = await db.Products.findByPk(id, {
-            include: ["image", "detail", "brand", "type"]
+            include: ["image", "detail", "brand", "collection", "type" ]
         })
         return res.render("products/productsEdit",{
-            productToEdit, brand, type
+            productToEdit, brand, collection, type
         })
         
     },
@@ -91,6 +106,7 @@ const productController = {
             discount: req.body.discount,
             description: req.body.description,
             brand_id: req.body.brand,
+            collection_id: req.body.collection,
             type_id: req.body.type
         },
         {
@@ -133,33 +149,41 @@ const productController = {
         return res.redirect('detail/' + id);
     },
 
-    destroy:  (req, res) => {
+    destroy: async (req, res) => {
         // let id = req.params.id;
-        // let product = await db.Products.findByPk(id);
-        // await product.removeImage([id]);
 
+        // const product = await db.Products.findByPk(id);
+        
+        // await product.removeImages([id]);
+        // await product.removeDetail([id]);
         // await db.Products.destroy({
         //     where: {
         //         id: id
         //     }
-        // });
-        // return res.redirect('list')
+        // })
+
+        // return res.redirect('list');
+
 
         let id = req.params.id;
 
-        let delimg = db.Image.destroy({
-            where:{
-                product_id: id
-            }
-        })
-
+        // let delimg = db.Image.destroy({
+        //     where:{
+        //         product_id: id
+        //     }
+        // })
+        // let delDetail = db.Detail.destroy({
+        //     where: {
+        //         product_id: id
+        //     }
+        // })
         let delProd = db.Products.destroy({
             where:{
                 id: id
             }
         })
-        Promise.all([delimg, delProd])
-        .then(()=> res.redirect('products/productList'))
+        Promise.all([delimg, delProd, delDetail])
+        .then(()=> res.redirect('list'))
         
     }
 }

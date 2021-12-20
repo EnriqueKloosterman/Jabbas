@@ -1,0 +1,19 @@
+article{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product-container{
+    width: 90%;
+}
+.product-container .img-container img{
+    width: 100%;
+}

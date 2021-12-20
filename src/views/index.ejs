@@ -1,0 +1,52 @@
+<%- include('./partials/head')  %> 
+<%- include('../partials/header')  %> 
+
+<main>
+    <article>
+        <h1>DESTACADOS</h1>
+        <section class="container">
+            <h1>aca va el listado de productos</h1>
+            <% for( let i = 0; i < featuredProducts.length; i++ ) { %>
+            <article class="product-container">
+                <section class="img-container">
+                    <img src="/images/products/<%= featuredProducts[i].image[0].name %>" alt="foto de <%= featuredProducts[i].name %>">
+                </section>
+                <section class="description-container">
+                    <h2 id="name"><%= featuredProducts[i].name %></h2>
+                    <p><%= featuredProducts[i].description %></p>
+                    <p><%= featuredProducts[i].brand.name %> </p>
+                    
+                </section>
+            </article>
+        
+            
+            <% } %>
+        </section>
+
+    </article>
+    
+    <article>
+        <h1>OFERTA</h1>
+        <section class="container">
+            <h1>aca va el listado de productos</h1>
+            <% for( let i = 0; i < onSale.length; i++ ) { %>
+            <article class="product-container">
+                <section class="img-container">
+                    <img src="/images/products/<%= onSale[i].image[0].name %>" alt="foto de <%= onSale[i].name %>">
+                </section>
+                <section class="description-container">
+                    <h2 id="name"><%= onSale[i].name %></h2>
+                    <p><%= onSale[i].description %></p>
+                    <p><%= onSale[i].brand.name %> </p>
+                    
+                </section>
+            </article>
+        
+            
+            <% } %>
+        </section>
+    </article>
+
+
+
+</main>

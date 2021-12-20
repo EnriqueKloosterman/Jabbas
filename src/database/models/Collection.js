@@ -9,6 +9,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         name: {
             type: DataTypes.STRING
+        },
+        image: {
+            type: DataTypes.STRING
         }
     };
 
@@ -21,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Collection.associate = (models) => {
         Collection.hasMany(models.Products, {
-            as: "collection",
+            as: "products",
             foreignKey: "collection_id"
         });
     };

@@ -9,6 +9,7 @@ const app = express();
 
 const userLoggedMiddleware = require('./src/middlewares/userLoggedMiddleware');
 
+const mainRouter = require('./src/routes/mainRoutes');
 const productRouter = require('./src/routes/productRoutes');
 const usersRouter = require('./src/routes/usersRoutes');
 
@@ -34,7 +35,7 @@ app.use(express.static(publicPath));
 app.use(methodOverride('method'));
 app.use(express.json());
 
-
+app.use('/', mainRouter)
 app.use('/products', productRouter);
 app.use('/users', usersRouter);
 
