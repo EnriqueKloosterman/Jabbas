@@ -1,0 +1,35 @@
+<main>
+    <section class="product-show">
+        <% for( let i = 0; i < products.length; i++ ) { %>
+            <article class="show-product">
+                <a href="/products/detail/<%= products[i].id %>">
+                    <div class="product-container">
+                        <div class="img-container">
+                            <img src="/images/products/<%= products[i].image[0].name %>" alt="" width=" 35%">
+                        </div>
+                        <div class="product-info">
+                            <p><%= products[i].name %> </p>
+                            <p><%= products[i].brand %> </p>
+                            <p><%= products[i].collection %> </p>
+                        </div>
+                    </div>
+                </a>
+            </article>        
+        <% } %>
+    </section>
+
+    <% if(locals.totalPages && totalPages > 1) { %>
+        <section class="shop-pagination">
+            <% for (let i=0; i < totalPages; i++){ %>
+             
+                    <form action="/products/collections/<%= collection.name %>" method="GET">                
+                        <input type="hidden" name="page" value="<%=i%>"/>
+                        <input type="hidden" name="size" value="<%=size%>"/>
+                        <button type="submit"><%=i+1%></button>
+                    </form>
+            <% } %>
+        </section>
+    <% } %>
+
+
+</main>

@@ -6,11 +6,11 @@
                     <img src="/images/users/<%= locals.userLogged.image %>" alt="" width="50px" str>
                     <%= locals.userLogged.name + ' ' + locals.userLogged.lastName %>
 
-                    <li><a href="/user/profile"><i class="fas fa-portrait"></i></a></li>
+                    <li><a href="/users/profile"><i class="fas fa-portrait"></i></a></li>
                     <li><a href="/users/logout">logout</a></li>
                 <% } else {%>
-                    <li><a href="/user/register">registrarse</a></li>
-                    <li><a href="user/logint">ingrersar</a></li>
+                    <li><a href="/users/register">registrarse</a></li>
+                    <li><a href="users/login">ingrersar</a></li>
                 <% } %>
             </ul>
         </nav>

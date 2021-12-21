@@ -7,7 +7,7 @@ const Op = db.Sequelize.Op;
 
 
 const productController = {
-
+    
     list: (req, res) => {
         db.Products.findAll({include: ["image", "detail", "brand", "type", "collection"]})
         .then(products => {
@@ -15,6 +15,63 @@ const productController = {
         })
         .catch((e) => console.log(e))
         // res.render('productList');
+    },
+    show: async (req, res) => {
+        const pageAsNumber = Number.parseInt(req.query.page);
+        const sizeAsNumber = Number.parseInt(req.query.size);
+        let page = 0;
+        if(!Number.isNaN(pageAsNumber) && pageAsNumber > 0){
+            page = pageAsNumber;
+        }
+        let size = 12;
+        if(!Number.isNaN(sizeAsNumber) && sizeAsNumber > 0 && sizeAsNumber <= 16){
+            size = sizeAsNumber;
+        }
+
+        let collection = req.params.collection;
+        let products;
+
+        try{
+            products = await db.Products.findAndCoun.All({
+                distinct: true,
+                limit: size,
+                offset: page * size,
+                include: ["images", "collection", "brand"]
+            });
+        }
+        catch(e){
+            res.send(e)
+        }
+
+        let productsToShow;
+
+        if(collection){
+            let productsCollection = await db.Collection.findOne({
+                where:{
+                    name: collection
+                }
+            })
+            if(productsCollection){
+                productsToShow = await db.Products.findAndCountAll({
+                    distinct: true,
+                    limit: size,
+                    offset: page * size,
+                    include: ["images", "collection", "brand"],
+                    where:{
+                        collection_id: collection.id
+                    }
+                })
+            }
+            if(productsToShow){
+                return res.render('products/productsShow', {
+                    products: productsToShow.rows,
+                    totalPages: Math.ceil(productsToShow.count / size),
+                    size: size
+                })
+            }
+        }
+
+
     },
     create: (req, res) => {
         let brandDb = db.Brand.findAll();
@@ -83,6 +140,61 @@ const productController = {
         return res.render('products/productsDetail', {
             detailProduct, brand, collection, type
         })
+    },
+    collection: async (req, res) => {
+        let collection = await db.Collection.findAll();
+        return res.render("products/productsCollection", {
+            collection: collection
+        });
+    },
+    collectionSelected: async (req, res ) => {
+        let collection = req.params.collection;
+
+        const pageAsNumber = Number.parseInt(req.query.page);
+        const sizeAsNumber = Number.parseInt(req.query.size);
+        let page = 0;
+        if(!Number.isNaN(pageAsNumber) && pageAsNumber > 0){
+            page = pageAsNumber;
+        }
+        let size = 12;
+        if(!Number.isNaN(sizeAsNumber) && sizeAsNumber > 0 && sizeAsNumber <= 16){
+            size = sizeAsNumber;
+        }
+
+        let collectionToShow;
+        let productToShow;
+
+        try{
+            collectionToShow = await db.Collection.findOne({
+                where:{
+                    name: collection,
+                },
+            });
+        } catch(e) {
+            return res.send(e);
+        }
+
+        try {
+            productToShow = await db.Products.findAndCountAll({
+                limit: size,
+                distinct: true,
+                offset: page * size,
+                include: ["image", "detail"],
+                where: {
+                    collection_id: collectionToShow.id
+                }
+            })
+        } catch(e) {
+            return res.send(e);
+        }
+
+        return res.render("products/productsShow", {
+            products: productToShow.rows,
+            collection: collectionToShow,
+            totalPages: Math.ceil(productToShow.count / size),
+            size: size,
+        });
+
     },
     editView: async (req, res) => {
         let id = req.params.id;
