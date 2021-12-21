@@ -5,13 +5,14 @@
 }
 body{
     font-family: 'Fira Sans Condensed', sans-serif;
-    
     background-color: #eeeaea;    
 }
-/* main{
+main{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-} */
+    align-items: center;
+}
 .top-navbar{
 }
 .top-navbar .login{
