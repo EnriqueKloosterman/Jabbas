@@ -7,7 +7,7 @@ const path = require('path')
 const mainController = {
     index: async (req, res) => {
         let featuredProducts = await db.Products.findAll({
-            include: ["image", "type", "brand"],
+            include: ["image", "type", "brand", "collection"],
             limit: 4,
             where: {
                 type_id: 3
@@ -15,17 +15,22 @@ const mainController = {
             
         })
         let onSale = await db.Products.findAll({
-            include: ["image", "type", "brand"],
+            include: ["image", "type", "brand", "collection"],
             limit: 4,
             where: {
                 type_id: 1
             }
         })
-
+        let newArrivals = await db.Products.findAll({
+            include: ["image", "type", "brand", "collection"],
+            order: [['id', 'DESC']],
+            limit: 4,
+            
+        })
         .catch((e) => {console.log(e) })
 
         
-        return res.render('index', {featuredProducts, onSale,
+        return res.render('index', {featuredProducts, onSale, newArrivals,
             title: "Jabba´s Palace", 
             style: "/css/home.css"})
     }

@@ -5,13 +5,16 @@
 }
 body{
     font-family: 'Fira Sans Condensed', sans-serif;
-    background-color: #eeeaea;    
+    background-color: #3b3434;    
 }
 main{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+}
+header{
+    justify-content: center;
 }
 .top-navbar{
 }
@@ -40,7 +43,54 @@ main{
     height: 45px;
     border-radius: 50%;
     border: solid 1px black;
-    margin: 8px, 0
-    
-    
+    margin: 8px, 0    
+}
+
+.middle{
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2%;
+    margin: auto;
+}
+.logo{
+    width: 43%;
+    padding: 1%;
+}
+.logo img{
+    width: 100%;
+}
+.search-bar{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1%;
+}
+.search-bar input{
+    width: 100%;
+    padding: 4px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 10px;
+}
+.search-bar button{
+    padding: 4px;
+    background-color: #4A569D;
+    border-radius: 5px;
+    position:absolute;
+    right: 1px;
+}
+
+@media(min-width: 720px){
+    .search-bar{
+        width: 50%;
+        padding: 0;
+    }
+    .search-bar input{
+        width: 100%;
+    }
 }

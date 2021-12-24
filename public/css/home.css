@@ -8,12 +8,19 @@ article{
 .title-name{
     width: 100%;
     text-align: center;
+    background-color: crimson;
+    border-bottom: 2px white solid;
+    border-radius: 5px;
 }
 .container{
     width: 95%;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    padding: 1%;
-    border: solid 1px palegreen;
+    align-items: center;
+    margin-bottom: 20px;
+    border: solid 2px white;
+    border-radius: 5px;
 }
 .product-wraper{
     display: flex;
@@ -21,16 +28,42 @@ article{
     width: 95%;
     padding: 2%;
     justify-content: center;
-    border: solid 1px paleturquoise;
+    align-items: center;
+    border: solid 2px yellow;
 }
 .product-container{
-    width: 90%;
-    border: solid 1px blue;
+    width: 42%;
+    /* border: solid 1px blue; */
+    /* min-height: 205px; */
     align-items: center;
+    margin: 10px;
+    position: relative;
 }
-
+.product-container h2{
+    font-size: 12px;
+    text-align: center;
+    padding: 2%;
+}
+.product-container a{
+    text-decoration: none;
+    background-color: blanchedalmond;
+    color: rgb(209, 201, 201);
+}
 .product-container .img-container img{
     width: 100%;
+    padding: 1%;
+}
+.description-container{
+    display: none;
+}
+.product-container:hover .description-container{
+    display: block;
+    position: absolute;
+    background-color: rgb(8, 8, 8,0.7);
+    bottom: 0%;
+    height: 60%;
+    width: 100%;
+    font-size: 12px;
 }
 
 @media(min-width: 720px){
@@ -38,14 +71,16 @@ article{
         display: flex;
         flex-direction: column;    
         text-align: center;
-        margin-top: 15px;
+        /* margin-top: 15px; */
         padding:10px;
-        background-color: transparent;
-        color: hotpink;
+        background-color: crimson;
+        color: whitesmoke;
+        text-shadow: black 8px 8px 12px ;
         width: 100%;
     }
     .container{
-        border: solid 1px black;
+        border: solid 2px white;
+        border-radius: 5px;
     }
     .product-wraper{
         border: solid 1px green;
@@ -54,8 +89,8 @@ article{
     }
     
     .product-container{
-        width: 30%;
-        border: solid 1px blue;
+        width: 23%;
+        /* border: solid 1px blue; */
     }
     .product-container .img-container{
         width: 100%;
@@ -63,5 +98,12 @@ article{
     }
     .product-container .img-container img{
         width: 100%;
+    }
+    .product-container h2{
+        font-size: 1rem;
+    }
+    .product-container:hover .description-container{
+        bottom: 0%;
+        height: 25%;
     }
 }
