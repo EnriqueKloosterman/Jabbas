@@ -9,6 +9,8 @@ article{
     width: 100%;
     text-align: center;
     background-color: crimson;
+    color: whitesmoke;
+    text-shadow: black 8px 8px 12px ;
     border-bottom: 2px white solid;
     border-radius: 5px;
 }
@@ -31,6 +33,34 @@ article{
     align-items: center;
     border: solid 2px yellow;
 }
+.collection-wrapper{  
+    display: flex;
+    flex-wrap: wrap;
+
+    
+    /* justify-content: center; */
+    align-items: center;
+    width: 90%;
+    justify-content: space-evenly;
+}
+.title-name-collection{
+    width: 100%;
+    text-align: center;
+    background-color: crimson;
+    color: whitesmoke;
+    text-shadow: black 8px 8px 12px ;
+
+    border-radius: 5px;
+}
+.collection-container{
+    width: 50%;
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
 .product-container{
     width: 42%;
     /* border: solid 1px blue; */
@@ -45,6 +75,7 @@ article{
     padding: 2%;
 }
 .product-container a{
+    align-self: center;
     text-decoration: none;
     background-color: blanchedalmond;
     color: rgb(209, 201, 201);

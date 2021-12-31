@@ -27,10 +27,12 @@ const mainController = {
             limit: 4,
             
         })
+        let collection = await db.Collection.findAll()
+
         .catch((e) => {console.log(e) })
 
         
-        return res.render('index', {featuredProducts, onSale, newArrivals,
+        return res.render('index', {featuredProducts, onSale, newArrivals, collection,
             title: "Jabba´s Palace", 
             style: "/css/home.css"})
     }

@@ -24,6 +24,24 @@
                 </div>
             </section>
         </article>
+            <section class="collection-container">
+                <div class="title-name-collection">
+                    <h2>COLECCION</h2>
+                </div>
+                <div class="collection-wrapper">
+                    <% for(let coleccion of collection) { %>
+                        <article class="product-container">
+                            <a href="/products/collections/<%= coleccion.name %>">
+                                <img src="/images/logos/<%= coleccion.image %>" alt="" width="100%">
+                            </a>
+                        </article>
+                    <% } %> 
+    
+                </div>
+            </section>
+        <article>
+
+        </article>
         
         <article>
             <section class="container">

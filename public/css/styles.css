@@ -16,8 +16,7 @@ main{
 header{
     justify-content: center;
 }
-.top-navbar{
-}
+
 .top-navbar .login{
     display: flex;
     flex-wrap: wrap;
@@ -47,27 +46,33 @@ header{
 }
 
 .middle{
-    width: 95%;
+    width: 90%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    padding: 2%;
+    justify-content: space-evenly;
+    /* padding: 2%; */
     margin: auto;
+    position: relative;
 }
 .logo{
-    width: 43%;
+    
+    width: 100%;
     padding: 1%;
 }
 .logo img{
     width: 100%;
+    border-radius: 10px;
+    position: relative;
+
 }
 .search-bar{
     display: flex;
     width: 50%;
     justify-content: center;
     align-items: center;
-    position: relative;
+    position: absolute;
     padding: 1%;
+    bottom: -3px;
 }
 .search-bar input{
     width: 100%;
@@ -76,21 +81,47 @@ header{
     text-align: center;
     position: relative;
     margin-bottom: 10px;
+    border: none;
 }
 .search-bar button{
-    padding: 4px;
-    background-color: #4A569D;
+    padding: 3.8px;
+    /* background-color: #4A569D; */
+    background-color: #ffffff;
     border-radius: 5px;
+    border: none;
     position:absolute;
     right: 1px;
 }
 
 @media(min-width: 720px){
+    .logo{
+        height: 50%;
+    }
+    .logo img{
+        height: 50%;
+    }
     .search-bar{
+        display: flex;
         width: 50%;
         padding: 0;
+        bottom: 50px;
+    }
+    .search-bar form{
+        width: 100%;
     }
     .search-bar input{
         width: 100%;
+        padding: 8px;
+        align-content: center;
+        border: none;
+    }
+    .search-button{
+        align-self: center;
+        justify-content: flex-end;
+        /* padding: 4px; */
+        border:  none;
+    }
+    .search-bar button i{
+        padding: 4px;
     }
 }
